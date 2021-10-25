@@ -1,0 +1,71 @@
+@startuml
+left to right direction
+' Horizontal lines:
+' Vertical lines: -->, <--, <-->, ->, -|{, <->
+title Model fizyczny
+
+map gallery {
+ id => int(5)
+ id_album => int(5)
+ author => varchar(255)
+ name => varchar(255)
+ description => varchar(255)
+ last_edited => varchar(255)
+ created_at => date
+}
+
+map album {
+ id => int(5)
+ id_album => int(5)
+ id_image => int(5)
+ author => varchar(255)
+ name => varchar(255)
+ description => varchar(255)
+ last_edited => varchar(255)
+ created_at => date
+}
+
+map image {
+ id => int(5)
+ id_image => int(5)
+ id_tag => int(5)
+ author => varchar(120)
+ name => varchar(255)
+ description => varchar(255)
+ created_at => date
+}
+
+map primary_comment {
+ id => int(5)
+ id_image => int(5)
+ id_primary => int(5)
+ author => varchar(120)
+ title => varchar(120)
+ content => varchar(255)
+ created_at => date
+}
+
+map secondary_comment {
+ id => int(5)
+ id_primary => int(5)
+ author => varchar(120)
+ title => varchar(120)
+ content => varchar(255)
+ created_at => date
+}
+
+map tag {
+ id => int(5)
+ id_tag => int(5)
+ name => varchar(120)
+ author => varchar(120)
+ last_element_added_at => date
+ created_at => date
+}
+
+gallery --|{ album
+album --|{ image
+image -|{ primary_comment
+primary_comment -|{ secondary_comment
+image -|{ tag
+@enduml
