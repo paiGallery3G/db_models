@@ -1,48 +1,56 @@
 @startuml
+left to right direction
+' Horizontal lines:
+' Vertical lines: -->, <--, <-->, ->, -|{, <->
+title Model konceptualny
 
 entity gallery {
-  * author:
-  * name:
-  * description:
-  * last_edited:
-  * created_at:
+ author
+ name
+ description
+ last_edited
+ created_at
+}
+
+entity album {
+ author
+ name
+ description
+ last_edited
+ created_at
 }
 
 entity image {
-  * id:
-  --
-  * author:
-  * name:
-  * description:
-  * created_at:
+ author
+ name
+ description
+ created_at
 }
 
-entity primary_comment{
-  * author:
-  * title:
-  * content:
-  * created_at:
+entity primary_comment {
+ author
+ title
+ content
+ created_at
 }
 
-entity secondary_comment{
-  * author:
-  * title:
-  * content:
-  * created_at:
+entity secondary_comment {
+ author
+ title
+ content
+ created_at
 }
 
-entity theme{
-  * name:
-  * author:
-  * last_element_added_at:
-  * created_at:
+entity tag {
+ name
+ author
+ last_element_added_at
+ created_at
 }
 
-gallery --|{ image
-image   --|{ primary_comment
-primary_comment --|{ secondary_comment
-
-theme }|--|{ image
-theme }|--|{ gallery
-
+gallery --|{ album
+album --|{ image
+image -|{ primary_comment
+primary_comment -|{ secondary_comment
+image -|{ tag
 @enduml
