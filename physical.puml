@@ -67,5 +67,5 @@ gallery --|{ album
 album --|{ image
 image -|{ primary_comment
 primary_comment -|{ secondary_comment
-image -|{ tag
+image }|-|{ tag
 @enduml
