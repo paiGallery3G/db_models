@@ -4,68 +4,67 @@ left to right direction
 ' Vertical lines: -->, <--, <-->, ->, -|{, <->
 title Model fizyczny
 
-map gallery {
- id => int(5)
- id_album => int(5)
- author => varchar(255)
- name => varchar(255)
- description => varchar(255)
- last_edited => varchar(255)
- created_at => date
-}
-
 map album {
- id => int(5)
- id_album => int(5)
- id_image => int(5)
- author => varchar(255)
- name => varchar(255)
- description => varchar(255)
- last_edited => varchar(255)
+ id => serial PRIMARY KEY
+ author => varchar(64)
+ title => varchar(64)
+ description => text
  created_at => date
 }
 
 map image {
- id => int(5)
- id_image => int(5)
- id_tag => int(5)
- author => varchar(120)
- name => varchar(255)
- description => varchar(255)
+ id => serial PRIMARY KEY
+ id_album => bigint
+ author => varchar(64)
+ title => varchar(64)
+ description => text
  created_at => date
 }
 
 map primary_comment {
- id => int(5)
- id_image => int(5)
- id_primary => int(5)
- author => varchar(120)
- title => varchar(120)
- content => varchar(255)
+ id => serial PRIMARY KEY
+ id_image => bigint
+ author => varchar(64)
+ title => varchar(64)
+ content => text
  created_at => date
 }
 
 map secondary_comment {
- id => int(5)
- id_primary => int(5)
- author => varchar(120)
- title => varchar(120)
- content => varchar(255)
+ id => serial PRIMARY KEY
+ id_primary => bigint
+ author => varchar(64)
+ title => varchar(64)
+ content => text
  created_at => date
 }
 
 map tag {
- id => int(5)
- id_tag => int(5)
- name => varchar(120)
- author => varchar(120)
- last_element_added_at => date
+ id => serial PRIMARY KEY
+ title => varchar(64)
+ author => varchar(64)
+ content => text
  created_at => date
 }
 
-gallery --|{ album
+map tag_image {
+ id_image => bigint
+ id_tag => bigint
+ PRIMARY KEY(id_image, id_tag)
+}
+
+map tag_album {
+ id_album => bigint
+ id_tag => bigint
+ PRIMARY KEY(id_album, id_tag)
+}
+
 album --|{ image
-image -|{ primary_comment
-primary_comment -|{ secondary_comment
-image }|-|{ tag
+image -o{ primary_comment
+primary_comment -o{ secondary_comment
+image --o{ tag_image
+tag --o{ tag_image
+album --o{ tag_album
+tag --o{ tag_album
+
 @enduml
