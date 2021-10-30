@@ -4,59 +4,49 @@ left to right direction
 ' Vertical lines: -->, <--, <-->, ->, -|{, <->
 title Model logiczny
 
-map gallery {
- id => int(5)
- author => varchar(255)
- name => varchar(255)
- description => varchar(255)
- last_edited => varchar(255)
- created_at => date
-}
-
 map album {
- id => int(5)
- author => varchar(255)
- name => varchar(255)
- description => varchar(255)
- last_edited => varchar(255)
+ id => serial PRIMARY KEY
+ author => varchar(64)
+ title => varchar(64)
+ description => text
  created_at => date
 }
 
 map image {
- id => int(5)
- author => varchar(120)
- name => varchar(255)
- description => varchar(255)
+ id => serial PRIMARY KEY
+ author => varchar(64)
+ title => varchar(64)
+ description => text
  created_at => date
 }
 
 map primary_comment {
- id => int(5)
- author => varchar(120)
- title => varchar(120)
- content => varchar(255)
+ id => serial PRIMARY KEY
+ author => varchar(64)
+ title => varchar(64)
+ content => text
  created_at => date
 }
 
 map secondary_comment {
- id => int(5)
- author => varchar(120)
- title => varchar(120)
- content => varchar(255)
+ id => serial PRIMARY KEY
+ author => varchar(64)
+ title => varchar(64)
+ content => text
  created_at => date
 }
 
 map tag {
- id => int(5)
- name => varchar(120)
- author => varchar(120)
- last_element_added_at => date
+ id => serial PRIMARY KEY
+ title => varchar(64)
+ author => varchar(64)
+ content => text
  created_at => date
 }
 
-gallery --|{ album
 album --|{ image
-image -|{ primary_comment
-primary_comment -|{ secondary_comment
-image -|{ tag
+image -o{ primary_comment
+primary_comment -o{ secondary_comment
+image }o--o{ tag
+album }o--o{ tag
 @enduml
