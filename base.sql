@@ -40,7 +40,6 @@ create table secondary_comment
 create table tag
 (
     id serial PRIMARY KEY,
-    id_primary bigint,
     title varchar(64),
     author varchar(64),
     content text,
