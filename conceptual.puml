@@ -16,7 +16,6 @@ entity album {
 entity image {
   * author:
   * title:
-  * ftype:
   * description:
   * created_at:
 }
