@@ -45,7 +45,7 @@ album --|{ image
 image   --o{ primary_comment
 primary_comment --o{ secondary_comment
 
-tag }|--|{ image
-tag }|--|{ album
+tag }o--o{ image
+tag }o--o{ album
 
 @enduml
