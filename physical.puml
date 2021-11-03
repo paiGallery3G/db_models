@@ -17,6 +17,7 @@ map image {
  id_album => bigint
  author => varchar(64)
  title => varchar(64)
+ ftype => varchar(32)
  description => text
  created_at => date
 }
