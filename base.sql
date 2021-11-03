@@ -12,6 +12,7 @@ create table image
     id serial PRIMARY KEY,
     id_album bigint,
     title varchar(64),
+    ftype varchar(32),
     author varchar(64),
     description text,
     created_at date
