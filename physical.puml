@@ -20,6 +20,7 @@ map image {
  ftype => varchar(32)
  description => text
  created_at => date
+ FOREIGN KEY(id_album) references album(id)
 }
 
 map primary_comment {
@@ -29,6 +30,7 @@ map primary_comment {
  title => varchar(64)
  content => text
  created_at => date
+ FOREIGN KEY(id_image) references image(id)
 }
 
 map secondary_comment {
@@ -38,6 +40,7 @@ map secondary_comment {
  title => varchar(64)
  content => text
  created_at => date
+ FOREIGN KEY(id_primary) references primary_comment(id)
 }
 
 map tag {
@@ -52,12 +55,16 @@ map tag_image {
  id_image => bigint unsigned
  id_tag => bigint unsigned
  PRIMARY KEY(id_image, id_tag)
+ FOREIGN KEY(id_image) references image(id)
+ FOREIGN KEY(id_tag) references tag(id)
 }
 
 map tag_album {
  id_album => bigint unsigned
  id_tag => bigint unsigned
  PRIMARY KEY(id_album, id_tag)
+ FOREIGN KEY(id_album) references album(id)
+ FOREIGN KEY(id_tag) references tag(id)
 }
 
 album --|{ image
