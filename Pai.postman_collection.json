@@ -1,0 +1,722 @@
+{
+	"info": {
+		"_postman_id": "399d2b69-5ec7-42b4-8806-bac46d60e27f",
+		"name": "Pai",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Pobranie listy albumów",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{base_url}}/album?page=1&size=20",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"album"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "size",
+							"value": "20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pobranie pojedynczego albumu na podstawie id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{base_url}}/album/{album_id}",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"album",
+						"{album_id}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dodanie albumu",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"album_title\":\"Test\", \"album_description\":\"Ala ma album XD\"}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{base_url}}/album",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"album"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dodanie zdjęcia do albumu",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"image_title\":\"Image1\", \"image_description\":\"Image description 1\", \"image_content\":\"base64_form\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{base_url}}/album/{album_id}",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"album",
+						"{album_id}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edycja albumu na podstawie id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"album_name\":\"Test\", \"album_description\":\"Ala ma album albo i nie\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{base_url}}/album/{album_id}",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"album",
+						"{album_id}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Usunięcie albumu na podstawie id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://{{base_url}}/album/{album_id}",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"album",
+						"{album_id}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pobranie listy zdjęć w albumie",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{base_url}}/album/{album_id}/image/?page=1&size=20",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"album",
+						"{album_id}",
+						"image",
+						""
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "size",
+							"value": "20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dodanie tagu do albumu",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://{{base_url}}/album/{album_id}/tag/{tag_id}",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"album",
+						"{album_id}",
+						"tag",
+						"{tag_id}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Usunięcie tagu z albumu",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://{{base_url}}/album/{album_id}/tag/{tag_id}",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"album",
+						"{album_id}",
+						"tag",
+						"{tag_id}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pobranie listy komentarzy danego zdjęcia",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{base_url}}/image/{image_id}/comment?page=1&size=20",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"image",
+						"{image_id}",
+						"comment"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "size",
+							"value": "20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pobranie pojedynczego zdjecia na podstawie id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{base_url}}/image/{image_id}",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"image",
+						"{image_id}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edycja zdjęcia na podstawie id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"image_title\":\"Testv2\", \"image_description\":\"Ala ma zdjecie albo i nie\", \"image_content\":\"base64_form\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{base_url}}/image/{image_id}",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"image",
+						"{image_id}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Usunięcie zdjęcia na podstawie id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://{{base_url}}/image/{image_id}",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"image",
+						"{image_id}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dodanie komentarza do zdjecia",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"comment_title\":\"Test\", \"comment_content\":\"Ala ma zdjecie beka\"}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{base_url}}/image/{image_id}/comment",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"image",
+						"{image_id}",
+						"comment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dodanie tagu do zdjęcia",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://{{base_url}}/image/{image_id}/tag/{tag_id}",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"image",
+						"{image_id}",
+						"tag",
+						"{tag_id}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Usunięcie tagu ze zdjęcia",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://{{base_url}}/image/{image_id}/tag/{tag_id}",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"image",
+						"{image_id}",
+						"tag",
+						"{tag_id}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pobranie wszystkich tagów jakie ma zdjęcie",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{base_url}}/album/{album_id}/tag/",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"album",
+						"{album_id}",
+						"tag",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pobranie pojedynczego komentarza na podstawie id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{base_url}}/comment/{comment_id}",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"comment",
+						"{comment_id}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edycja komentarza na podstawie id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"comment_title\":\"Testv2\", \"comment_content\":\"Ala ma zdjecie beka\"}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{base_url}}/comment/{comment_id}",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"comment",
+						"{comment_id}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Usunięcie komentarza na podstawie id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://{{base_url}}/comment/{comment_id}",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"comment",
+						"{comment_id}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dodanie sec komentarza do komentarza na podstawie id",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"comment_title\":\"Test\", \"comment_content\":\"Ala ma zdjecie beka\"}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{base_url}}/comment/{comment_id}/sec_comment",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"comment",
+						"{comment_id}",
+						"sec_comment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pobranie listy sec_komentarzy w komentarzu",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{base_url}}/comment/{comment_id}/sec_comment?page=1&size=20",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"comment",
+						"{comment_id}",
+						"sec_comment"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "size",
+							"value": "20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pobranie pojedynczego komentarza na podstawie id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{base_url}}/sec_comment/{sec_comment_id}",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"sec_comment",
+						"{sec_comment_id}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edycja komentarza na podstawie id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "https://{{base_url}}/sec_comment/{sec_comment_id}",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"sec_comment",
+						"{sec_comment_id}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Usunięcie komentarza na podstawie id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://{{base_url}}/sec_comment/{sec_comment_id}",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"sec_comment",
+						"{sec_comment_id}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pobranie listy tagów",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{base_url}}/tag?page=1&size=50",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"tag"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "size",
+							"value": "50"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dodanie pojedynczego tagu na podstawie id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{base_url}}/tag/{tag_id}",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"tag",
+						"{tag_id}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dodanie tagu",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"tag_title\":\"Test\", \"tag_content\":\"Ala ma album XD\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{base_url}}/tag",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"tag"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edycja tagu",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"tag_title\":\"Test2\", \"tag_content\":\"Ala ma albumv2 XD\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{base_url}}/tag/{tag_id}",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"tag",
+						"{tag_id}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Usunięcie tagu na podstawie id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://{{base_url}}/tag/{tag_id}",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"tag",
+						"{tag_id}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
