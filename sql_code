@@ -1,0 +1,34 @@
+#tworzenie tabel
+INSERT INTO `album` (`id`, `title`, `author`, `description`, `created_at`) VALUES (NULL, 'Wakacje', 'John Doe', 'Album ze zdjęciami z wakacji 2004', curdate());
+
+#zdjecie
+INSERT INTO `image` (`id`, `id_album`, `title`, `ftype`, `author`, `description`, `created_at`) VALUES (NULL, '2', 'Wujek w wodzie', 'jpg', 'Tata', 'Wujek tonie w wodzie', curdate());
+
+INSERT INTO `image` (`id`, `id_album`, `title`, `ftype`, `author`, `description`, `created_at`) VALUES (NULL, '2', 'Grill', 'jpg', 'Tata', 'Wieczorny grill', curdate());
+
+#tag
+INSERT INTO `tag` (`id`, `title`, `author`, `content`, `created_at`) VALUES (NULL, 'Polska', 'Mama', 'Zdjęcia z Polski', curdate());
+
+INSERT INTO `tag` (`id`, `title`, `author`, `content`, `created_at`) VALUES (NULL, 'Góry', 'Mama', 'Zdjęcia z gór', curdate());
+
+INSERT INTO `tag` (`id`, `title`, `author`, `content`, `created_at`) VALUES (NULL, '2004', 'Tata', 'Zdjęcia z roku 2004', curdate());
+
+#tag_album
+INSERT INTO `tag_album` (`id_album`, `id_tag`) VALUES ('2', '2');
+
+#tag_image
+INSERT INTO `tag_image` (`id_image`, `id_tag`) VALUES ('2', '1');
+
+#primary_comment
+INSERT INTO `primary_comment` (`id`, `id_image`, `title`, `author`, `content`, `created_at`) VALUES (NULL, '1', 'Hahaha', 'Pawełek', 'ale śmieszne zdjęcie', CURRENT_DATE());
+
+INSERT INTO `primary_comment` (`id`, `id_image`, `title`, `author`, `content`, `created_at`) VALUES (NULL, '2', 'Pyszne', 'Ciocia', 'Wygląda bardzo pysznie', CURRENT_DATE());
+
+#secondary_comment
+INSERT INTO `secondary_comment` (`id`, `id_primary`, `title`, `author`, `content`, `created_at`) VALUES (NULL, '1', ':(', 'Mama', 'Pawełku to nie ładnie się śmiać z kogoś', CURRENT_DATE());
+
+
+
+
+
+
